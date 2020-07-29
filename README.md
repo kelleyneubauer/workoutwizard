@@ -20,6 +20,7 @@ Gym employees will be able to select the exercise combination and specify the nu
 On a given day, a gym employee could hop on the Workout Wizard and search for workouts to use in classes. They could also spend time creating new workouts or editing/deleting old workouts. 
 
 ## Database Outline
+![erd_schema](340_erd_schema.png)
 - Workouts​ - A workout will have a name and optionally, a user_id who created it. You can also update a workout which will change the updated_at datetime. When updating a workout, you can remove the user_id connection. Any user can delete and edit any workout, even workouts they did not create. The expectation is that each Workout has at least 1 exercise involved. Identical workouts could be created by multiple users but will be distinguishable by their unique ID and the Workout Name. Same user could create the same workout on a different date. Workouts will be connected to Exercises via exercise_relations. This is where the number of sets/reps per exercise is determined. On the workouts page, users will be able to search workouts by the name of the creator, the name of the workout, exercise, or muscle group.
   - id​: auto_increment, unique, not NULL, PK
   - name​: varchar, not NULL
@@ -57,3 +58,13 @@ particular exercise targets. Users will be able to add new exercise/muscle group
 - Exercise to Muscle Group: An exercise must have at least one muscle group and a muscle group may be included in zero or many exercises (Many to Many). Connected through Exercise_MuscleGroups.
 - Workout to Exercise: An exercise can be included in zero or many workouts. A workout must have at least one exercise but can have many. (Many to Many); Connected through Workout_Exercises table.
 - Workout to User: A workout will have at most 1 User, the user who created it, and a user can create zero or many workouts (1 to Many, optional participation)
+
+## CRUD Implementation
+![](340_home_page.png)
+![](340_workouts_page.png)
+![](340_users_page.png)
+![](340_exercises_page.png)
+![](340_workouts_exercises_page.png)
+![](340_muscle_groups_page.png)
+![](340_exercises_musclegroups_page.png)
+
